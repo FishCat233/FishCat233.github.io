@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>另一条声明</title>
+      <link href="/2024/03/%E5%8F%A6%E4%B8%80%E6%9D%A1%E5%A3%B0%E6%98%8E/"/>
+      <url>/2024/03/%E5%8F%A6%E4%B8%80%E6%9D%A1%E5%A3%B0%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<p>关于博客的简介。</p><p>致博客的老朋友们（虽然一个也没有）：由于一些原因，新建了一个博客，先前的博文会在后续工作中逐渐搬运回来。在这里重新描述一下这个博客。</p><span id="more"></span><h2 id="欢迎来到微语的闲庭小室！"><a href="#欢迎来到微语的闲庭小室！" class="headerlink" title="欢迎来到微语的闲庭小室！"></a>欢迎来到微语的闲庭小室！</h2><p>这里是我的闲庭小室，也是我写各种小记的地方。</p><h3 id="小记世界"><a href="#小记世界" class="headerlink" title="小记世界"></a>小记世界</h3><p>什么是小记？小记是博主我（脑内）提出的一个文章类型，通过简洁简单的文章来记录一样简单或稍有复杂的事物。老实说，关于小记的具体形式，我并没有一个清晰的印象（概念），我只是在模仿脑内想象的模糊的形象在进行写作。不过我相信，随着写作文章数量的增加，我也许可以概况出这一形象的特点，从而得到关于小记的具体形象和要求。</p><p>之所以使用小记这种形式，是因为我一时兴起的兴趣爱好过多，但是注意力又过于分散。有时候一段时间看看这个，过段时间又抛弃了这个，盯着另一件事情看——久而久之，脑海里会堆起各种碎片化的知识和信息，而这种碎片化的、不成系统的信息在脑内更容易被清理和遗忘。为了防止看了又忘的无用功，也为了方便自己回忆，因此选择使用小记来辅助回忆看过的知识。</p><h3 id="会看见"><a href="#会看见" class="headerlink" title="会看见"></a>会看见</h3><p>通过小记，我可以尝试把我看到的，我觉得有意思的东西、部分奇思异想写下来。</p><p>因为我也不知道我的注意力到底会跑到哪去，但是可以肯定的是，大概率会出现以下类别的内容：</p><ul><li>计算机相关</li><li>数学相关</li><li>游戏相关</li></ul><p>当然也可能会出现其他的，请不要因此感到意外。</p><h3 id="在最后"><a href="#在最后" class="headerlink" title="在最后"></a>在最后</h3><p>我想写的大概就这么多，从今后请多关照。</p><p><strong>那么，从小记开始吧。</strong></p><h2 id="老朋友，又见面了"><a href="#老朋友，又见面了" class="headerlink" title="老朋友，又见面了"></a>老朋友，又见面了</h2><p>这是第二条声明了，因为换了设备，原来的 hexo 博客数据还没有转移到新设备，因此又重新创建了一个博客，而原来的博客上的文章也会在后续陆续搬运回来。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客公告 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 公告 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2024/03/hello-world/"/>
       <url>/2024/03/hello-world/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start">Quick Start</h2><h3 id="Create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
       
