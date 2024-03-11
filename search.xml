@@ -15,9 +15,9 @@
           
           <category> 计算机世界 </category>
           
-          <category> 数学王国 </category>
-          
           <category> 算法 </category>
+          
+          <category> 数学王国 </category>
           
           <category> 概率统计 </category>
           
@@ -81,9 +81,9 @@
           
           <category> 计算机世界 </category>
           
-          <category> 数学王国 </category>
-          
           <category> 算法 </category>
+          
+          <category> 数学王国 </category>
           
           <category> 概率统计 </category>
           
@@ -107,7 +107,7 @@
       <link href="/2024/03/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E5%A5%BD%E7%94%A8%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/"/>
       <url>/2024/03/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E5%A5%BD%E7%94%A8%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[<p>这篇文章会记录值得记下的软件和资产资源、还有乱七八糟的网站。</p><h2 id="more"><span id="more"></span></h2><h2 id="软件">软件</h2><hr><h2 id="资产资源">资产资源</h2><h3 id="霞鹜文楷系列">霞鹜文楷系列</h3><p>霞鹜文楷是一款开源中文字体，基于 FONTWORKS 出品字体 Klee One 衍生。</p><p><img src="/2024/03/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E5%A5%BD%E7%94%A8%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/wenkai-1.png" alt="霞鹜文楷"></p><p>Github: <a href="https://github.com/lxgw/LxgwWenKai">https://github.com/lxgw/LxgwWenKai</a></p><hr><h2 id="网站">网站</h2><h3 id="中科大测速站"><a href="https://test.ustc.edu.cn/">中科大测速站</a></h3><p>如名，用来测网速的。</p><h3 id="下载"><a href="https://d.serctl.com/">下载</a></h3><p>能够用来加速下载github的文件。</p><p>不过最近似乎是调整了下载速度，感觉没以前快了，不过还挺好用。</p><h3 id="github-文件加速"><a href="https://gh.api.99988866.xyz/">GitHub 文件加速</a></h3><p>似乎是挂了。</p><h3 id="github-加速下载"><a href="https://github.ur1.fun/">Github 加速下载</a></h3><p>速度还可以。</p><h3 id="defuse-online-x86-x64-assembler-and-disassembler"><a href="https://defuse.ca/online-x86-assembler.htm#disassembly">Defuse Online x86 / x64 Assembler and Disassembler</a></h3><p>挺好用的，可以把x86和x64汇编代码和十六进制进行相互转换。这个<a href="https://defuse.ca">网站</a>还有其他的工具看起来也挺好使的，速度很快。</p><h3 id="online-assembler-and-disassembler"><a href="https://shell-storm.org/online/Online-Assembler-and-Disassembler/">Online Assembler and Disassembler</a></h3><p>相比上面那个汇编十六进制的网站，这个架构选择会多很多，功能选项比较多，不过国内访问比较慢。</p><h3 id="积分分步计算器"><a href="https://mathdf.com/int/cn/">积分分步计算器</a></h3><p>能够分步算出积分的计算器，挺高级。</p><h3 id="learn-git-branching"><a href="https://learngitbranching.js.org/">Learn Git Branching</a></h3><p>以游戏的方式学会 git 的简单使用方式。</p><p>倒也没游戏那么夸张，不过你可以当作是游戏——通过一关关讲清楚git的基本使用方式如（rebase commit等等），不说能记住多少，学完基本能对git有个了解。</p><p>最赞的是这个网站对git版本控制的可视化，学起来很容易理解。</p><h3 id="ooee收藏夹"><a href="https://www.oedh.net/">OOEE收藏夹</a></h3><p>记录了各种网站，几年前经常从上面找网站来看番。</p><p>吹个逼，n年前我给站长建议加上某个番剧资源网站，很快那站长就加了，好评。</p><p>虽然叫OOEE收藏夹，但是地址是 <a href="http://www.oedh.net">www.oedh.net</a> ——原先那个ooee的域名过期了。</p><h3 id="下次一定-cn"><a href="https://www.iiice.cn/">下次一定.cn</a></h3><p>资源站，虽然不怎么用，但是看着感觉挺全的。</p><hr><h2 id="杂类-并不是推荐-只是博主收藏">杂类（并不是推荐，只是博主收藏）</h2><h3 id="绘迷"><a href="https://enazo.cn/">绘迷</a></h3><p>你画我猜。</p><h3 id="雨世界地图"><a href="https://rain-world-map.gitee.io/index.html">雨世界地图</a></h3><p>雨世界地图，DLC的蛞蝓猫的地图也有，标注信息很详细。</p><h3 id="随机地名生成器"><a href="https://thestoryshack.com/zh/tools/place-name-generators/">随机地名生成器</a></h3><p>写小说实在不知道起什么名的时候会参考。</p><h3 id="挂刀行情站"><a href="https://steam.iflow.work/">挂刀行情站</a></h3><p>如题。</p><h3 id="roll20"><a href="https://roll20.net/">Roll20</a></h3><p>跑团工具。没用过，只是记一下。</p><h3 id="纯美苹果园"><a href="http://bbs.goddessfantasy.net/bbs/">纯美苹果园</a></h3><p>TRPG游戏网络论坛。</p>]]></content>
+        <content type="html"><![CDATA[<p>这篇文章会记录值得记下的软件和资产资源、还有乱七八糟的网站。</p><h2 id="more"><span id="more"></span></h2><h2 id="软件">软件</h2><h3 id="okular"><a href="https://okular.kde.org/">Okular</a></h3><p>好用的电子书阅读器，拿来看pdf和epub挺方便。</p><hr><h2 id="资产资源">资产资源</h2><h3 id="霞鹜文楷系列">霞鹜文楷系列</h3><p>霞鹜文楷是一款开源中文字体，基于 FONTWORKS 出品字体 Klee One 衍生。</p><p><img src="/2024/03/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E5%A5%BD%E7%94%A8%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/wenkai-1.png" alt="霞鹜文楷"></p><p>Github: <a href="https://github.com/lxgw/LxgwWenKai">https://github.com/lxgw/LxgwWenKai</a></p><hr><h2 id="网站">网站</h2><h3 id="中科大测速站"><a href="https://test.ustc.edu.cn/">中科大测速站</a></h3><p>如名，用来测网速的。</p><h3 id="下载"><a href="https://d.serctl.com/">下载</a></h3><p>能够用来加速下载github的文件。</p><p>不过最近似乎是调整了下载速度，感觉没以前快了，不过还挺好用。</p><h3 id="github-文件加速"><a href="https://gh.api.99988866.xyz/">GitHub 文件加速</a></h3><p>似乎是挂了。</p><h3 id="github-加速下载"><a href="https://github.ur1.fun/">Github 加速下载</a></h3><p>速度还可以。</p><h3 id="defuse-online-x86-x64-assembler-and-disassembler"><a href="https://defuse.ca/online-x86-assembler.htm#disassembly">Defuse Online x86 / x64 Assembler and Disassembler</a></h3><p>挺好用的，可以把x86和x64汇编代码和十六进制进行相互转换。这个<a href="https://defuse.ca">网站</a>还有其他的工具看起来也挺好使的，速度很快。</p><h3 id="online-assembler-and-disassembler"><a href="https://shell-storm.org/online/Online-Assembler-and-Disassembler/">Online Assembler and Disassembler</a></h3><p>相比上面那个汇编十六进制的网站，这个架构选择会多很多，功能选项比较多，不过国内访问比较慢。</p><h3 id="积分分步计算器"><a href="https://mathdf.com/int/cn/">积分分步计算器</a></h3><p>能够分步算出积分的计算器，挺高级。</p><h3 id="learn-git-branching"><a href="https://learngitbranching.js.org/">Learn Git Branching</a></h3><p>以游戏的方式学会 git 的简单使用方式。</p><p>倒也没游戏那么夸张，不过你可以当作是游戏——通过一关关讲清楚git的基本使用方式如（rebase commit等等），不说能记住多少，学完基本能对git有个了解。</p><p>最赞的是这个网站对git版本控制的可视化，学起来很容易理解。</p><h3 id="ooee收藏夹"><a href="https://www.oedh.net/">OOEE收藏夹</a></h3><p>记录了各种网站，几年前经常从上面找网站来看番。</p><p>吹个逼，n年前我给站长建议加上某个番剧资源网站，很快那站长就加了，好评。</p><p>虽然叫OOEE收藏夹，但是地址是 <a href="http://www.oedh.net">www.oedh.net</a> ——原先那个ooee的域名过期了。</p><h3 id="下次一定-cn"><a href="https://www.iiice.cn/">下次一定.cn</a></h3><p>资源站，虽然不怎么用，但是看着感觉挺全的。</p><hr><h2 id="杂类-并不是推荐-只是博主收藏">杂类（并不是推荐，只是博主收藏）</h2><h3 id="绘迷"><a href="https://enazo.cn/">绘迷</a></h3><p>你画我猜。</p><h3 id="雨世界地图"><a href="https://rain-world-map.gitee.io/index.html">雨世界地图</a></h3><p>雨世界地图，DLC的蛞蝓猫的地图也有，标注信息很详细。</p><h3 id="随机地名生成器"><a href="https://thestoryshack.com/zh/tools/place-name-generators/">随机地名生成器</a></h3><p>写小说实在不知道起什么名的时候会参考。</p><h3 id="挂刀行情站"><a href="https://steam.iflow.work/">挂刀行情站</a></h3><p>如题。</p><h3 id="roll20"><a href="https://roll20.net/">Roll20</a></h3><p>跑团工具。没用过，只是记一下。</p><h3 id="纯美苹果园"><a href="http://bbs.goddessfantasy.net/bbs/">纯美苹果园</a></h3><p>TRPG游戏网络论坛。</p>]]></content>
       
       
       <categories>
@@ -144,9 +144,9 @@
       
         <tags>
             
-            <tag> 计算机 </tag>
-            
             <tag> 科技数码 </tag>
+            
+            <tag> 计算机 </tag>
             
             <tag> 小记 </tag>
             
