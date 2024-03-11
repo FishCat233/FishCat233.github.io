@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>统计学习三要素</title>
+      <link href="/2024/03/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E4%B8%89%E8%A6%81%E7%B4%A0/"/>
+      <url>/2024/03/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E4%B8%89%E8%A6%81%E7%B4%A0/</url>
+      
+        <content type="html"><![CDATA[<p>《统计学习方法》读书小记 其一。</p><p><em><strong>Whispery 原创，转载请注明作者和博文地址。</strong></em></p><h1 id="统计学习三要素">统计学习三要素</h1><p>统计学习方法都是由 <strong>模型、策略和算法</strong> 构成的，这就是统计学习三要素，它们之间的关系可以表示为：</p><p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>方法</mtext><mo>=</mo><mtext>模型</mtext><mo>+</mo><mtext>策略</mtext><mo>+</mo><mtext>算法</mtext></mrow><annotation encoding="application/x-tex">方法 = 模型 + 策略 + 算法 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">模</span><span class="mord cjk_fallback">型</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">策</span><span class="mord cjk_fallback">略</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">法</span></span></span></span></span></p><h2 id="模型">模型</h2><p>在监督学习中，模型就是所要学习（模仿）的条件概率分布或决策函数。</p><p>在参考文章中看到一个很通俗的例子来解释什么是模型：</p><blockquote><p>想象你正在尝试为一堆乱飞的鸟找一个轨迹。模型就像你选择的特定的路径或形状，例如你认为它们是按照直线、圆形或某种波浪线飞行。</p></blockquote><p><strong>模型是对现象背后原理的猜想。</strong></p><p>而模型多是带有参数的，不同参数可以产生不同效果的模型，<strong>而所有参数各自的模型的总和则构成了假设空间。</strong></p><p>借上面那个乱飞鸟的例子，例如模型（猜想）是鸟是匀速圆形飞行的，那么参数就可以是圆形的半径，鸟的速度。不同的半径和速度构成的具体轨迹都是不同的，因此对鸟飞行轨迹的预测产生了不同的结果，而所有半径和速度可能取得的值的组合所产生的多个模型构成的总和就是假设空间。</p><h2 id="策略">策略</h2><p>策略，即模型的学习策略，换句话说是从假设空间中所有可能的模型里挑选模型的策略。</p><p>目标是选择最优的模型，也就是最能准确预测乱飞鸟轨迹的模型。</p><p>假设空间里面充斥着各种参数组合产生的模型，我们可以通过对比各种模型所给出的预测值和真实值的差距来筛选出最优的模型。<strong>这个用于计算预测值和真实值差距的函数就是损失函数——又或叫代价函数。</strong></p><p>损失函数可以用来测量模型的错误程度，从而评估模型的准确度。</p><p>不过单计算当前情况下的损失值是不够的，因为由于实际情况下多变复杂，不同情况下同一个模型的损失（即错误程度）可能不同，因此应该考虑在所有情况下损失都能维持较小的模型——也就是令损失函数期望值较小的模型。</p><p><strong>损失函数的期望值代表了所有情况下的平均意义下的损失，称为期望损失或风险函数。</strong></p><p>依然是借用参考文章中的例子：</p><blockquote><p>想象你和朋友们在野外，大家在玩一个游戏——用纸飞机比赛看谁飞得远。你观察每个人怎么折纸飞机、怎么扔、飞机的大小和形状等等。你把所有这些观察到的信息，形成了一种“理论”或“想法”来预测下一次纸飞机飞行的距离——这是模型。</p></blockquote><p>而策略则是评估模型的方法，例如你决定采用“每次预测距离和实际飞行距离的差值”来评估当前模型的好坏（也就是当前模型参数的好坏）——这个算差值来评估模型的方法就是损失函数。</p><p>但是不可能简简单单的根据飞一次的差值来评估自己的“理论”（模型）的好坏，因为有可能不同情况下不同“理论”的适用程度不同，这个模型能预测好这次的飞行，但不一定能预测好下一次的飞行。</p><p>因此你会考虑记录多次飞行的结果和预测结果的差值，最终算出各个模型差值的平均数，然后选平均差值最小的那个。</p><p>这个平均差值就是期望损失（风险函数）。</p><h2 id="算法">算法</h2><p>算法是学习的主干，在确定模型和评估模型好坏的方法（策略）后，<strong>还需要一个寻找最优模型的方法——这就是算法。</strong></p><p>例如在上面的纸飞机中，你可以随便选参数一个个评估来寻找最好的“理论”（不过那样会很慢！），也可以一步步的让参数递增来寻找。</p><h1 id="三要素与统计学习方法">三要素与统计学习方法</h1><blockquote><p>统计学习方法之间的不同，主要来自于模型、策略、算法的不同。确定了模型、策略、算法，统计学习方法也就确定了。</p></blockquote><h1 id="后话-博主的话">后话（博主的话）</h1><p>作为小记，我尽量使用了较为简洁的语言去阐明三者的关系，但是受限于我个人的理解水平和表述水平，有些地方可能还是勉勉强强甚至有理解错误的情况，因此如果有听不懂的，可以在试着在评论区问，看到了的我应该会回。</p><hr><h1 id="参考文章">参考文章</h1><p>农凡.<a href="https://zhuanlan.zhihu.com/p/654174621">1-3 统计学习三要素(模型、策略与算法)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机世界 </category>
+          
+          <category> 算法 </category>
+          
+          <category> 数学王国 </category>
+          
+          <category> 概率统计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机 </tag>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 读书小记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>热烈庆祝博客1000天——</title>
       <link href="/2024/03/%E7%83%AD%E7%83%88%E5%BA%86%E7%A5%9D%E5%8D%9A%E5%AE%A21000%E5%A4%A9/"/>
       <url>/2024/03/%E7%83%AD%E7%83%88%E5%BA%86%E7%A5%9D%E5%8D%9A%E5%AE%A21000%E5%A4%A9/</url>
@@ -46,11 +81,11 @@
           
           <category> 计算机世界 </category>
           
+          <category> 算法 </category>
+          
           <category> 数学王国 </category>
           
           <category> 概率统计 </category>
-          
-          <category> 算法 </category>
           
       </categories>
       
