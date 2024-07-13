@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>小记滑动窗口</title>
+      <link href="/2024/07/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+      <url>/2024/07/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="滑动窗口法">滑动窗口法</h1><h2 id="所需变量">所需变量</h2><p>滑动窗口由三部分构成：边界，条件相关变量，需求记录变量。</p><h3 id="边界">边界</h3><p>边界由两个指针构成，分别称为左边界和右边界。</p><h3 id="条件相关变量">条件相关变量</h3><p>条件相关变量是用于存储题目所需条件数值的变量。（例如区间和，区间长）</p><h3 id="需求记录变量">需求记录变量</h3><p>需求记录变量是用于算法计划返回的变量，也是题目需求的变量，通常是最大值或最小值（例如区间和最大值，或是满足条件的区间最长长度）</p><h2 id="方法步骤">方法步骤</h2><p><s>听好了，我只写一遍。</s></p><ol><li>所需变量声明</li><li>进行循环，在循环中不断移动右边界，同时不断更新条件相关变量</li><li>在每次移动右边界后，检查条件相关变量是否满足需求记录变量，如果满足则进入另一个循环。</li><li>在另一个循环中，左边界不断移动，更新条件相关变量，记录需求记录变量，直到条件相关变量不满足条件，循环破坏，回到右边界移动的大循环</li><li>需求记录变量为所求</li><li><s>去跟小伙伴们吹逼</s></li></ol><p>更加易懂的代码版本（也就是模板代码）：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sumWindow</span>(<span class="params">nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; nums:</span><br><span class="line">    <span class="comment"># 窗口左右边界</span></span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 条件相关变量</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span>     <span class="comment"># 以窗口内元素总和为示例</span></span><br><span class="line">    res = <span class="number">0</span>     <span class="comment"># 以求最大元素总和为例</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历</span></span><br><span class="line">    <span class="keyword">while</span> right &lt; <span class="built_in">len</span>(nums):</span><br><span class="line">        <span class="comment"># 更新值</span></span><br><span class="line">        <span class="built_in">sum</span> += nums[right]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果满足条件，则左边界移动，遍历并记录，直至破坏条件</span></span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">sum</span> &gt; target:</span><br><span class="line">            <span class="comment"># 记录最大值</span></span><br><span class="line">            res = <span class="built_in">max</span>(<span class="built_in">sum</span>,res)</span><br><span class="line">            <span class="comment"># 左边界移动，更新 sum</span></span><br><span class="line">            <span class="built_in">sum</span> -= nums[left]</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 右边界移动</span></span><br><span class="line">        right += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res      <span class="comment"># 别高兴到忘了返回...</span></span><br></pre></td></tr></table></figure><h2 id="论为什么滑动窗口比暴力快">论为什么滑动窗口比暴力快</h2><p>猜测上，滑动窗口采用了一种特别的遍历方法，能够在有效排除不符合条件的组合的同时不排除满足条件的组合。</p><p>由于满足条件的数组之间存在有一定相似性，滑动窗口法通过利用这个相似性——在两端移动过程中处于满足条件和不满足条件之间反复横跳，以高效遍历所有可能的组合。</p><h1 id="经典为例">经典为例</h1><blockquote><p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">长度最小的子数组</a></p><p>给定一个含有 n 个正整数的数组和一个正整数 target。找出该数组中满足其总和大于等于 target 的长度最小的子数组<code>[numsl, numsl+1, ..., numsr-1, numsr]</code>，并返回其长度。如果不存在符合条件的子数组，返回 <code>0</code>。</p><p>示例 1：</p><blockquote><p>输入：target = 7, nums = [2,3,1,2,4,3]</p><p>输出：2</p><p>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p></blockquote></blockquote><p>显然可以使用暴力解法，但是本文在此不做提及。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minSubArrayLen</span>(<span class="params">self, target: <span class="built_in">int</span>, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="comment"># 滑动窗口法</span></span><br><span class="line">        left = <span class="number">0</span>    <span class="comment"># 左边界</span></span><br><span class="line">        right = <span class="number">0</span>   <span class="comment"># 右边界</span></span><br><span class="line">        <span class="built_in">sum</span> = <span class="number">0</span>     <span class="comment"># 条件相关变量（区间和）</span></span><br><span class="line">        ret = <span class="number">0</span>     <span class="comment"># 需求记录变量（区间和最大值）</span></span><br><span class="line">        length = <span class="built_in">len</span>(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> right &lt; length:</span><br><span class="line">            <span class="comment"># 稳定往窗口加数</span></span><br><span class="line">            <span class="comment"># 右边界无条件移动，并且移动时计算当前的条件相关变量值</span></span><br><span class="line">            <span class="built_in">sum</span> += nums[right]</span><br><span class="line">            right += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 满足题目条件记录下来，然后 持续 往窗口减数</span></span><br><span class="line">            <span class="comment"># 仅在条件相关变量满足条件时执行，左边界移动，破坏满足的条件，并记录需求记录变量</span></span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">sum</span> &gt;= target:</span><br><span class="line">                <span class="comment"># 记录</span></span><br><span class="line">                <span class="keyword">if</span> ret == <span class="number">0</span>:</span><br><span class="line">                    ret = right - left</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    ret = <span class="built_in">min</span>(ret, right - left)</span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 减数</span></span><br><span class="line">                <span class="built_in">sum</span> -= nums[left]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机世界 </category>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 科技数码 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数列 </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何记笔记</title>
       <link href="/2024/06/%E5%A6%82%E4%BD%95%E8%AE%B0%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/06/%E5%A6%82%E4%BD%95%E8%AE%B0%E7%AC%94%E8%AE%B0/</url>
@@ -71,9 +104,9 @@
           
           <category> 计算机世界 </category>
           
-          <category> 数学王国 </category>
-          
           <category> 算法 </category>
+          
+          <category> 数学王国 </category>
           
           <category> 概率统计 </category>
           
@@ -137,9 +170,9 @@
           
           <category> 计算机世界 </category>
           
-          <category> 数学王国 </category>
-          
           <category> 算法 </category>
+          
+          <category> 数学王国 </category>
           
           <category> 概率统计 </category>
           
