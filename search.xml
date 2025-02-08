@@ -4,16 +4,58 @@
   
     
     <entry>
+      <title>git clone 报错什么 RPC failed 啊怎么办？</title>
+      <link href="/2025/02/250203/"/>
+      <url>/2025/02/250203/</url>
+      
+        <content type="html"><![CDATA[<p>在使用conda和pip安装某仓库环境的时候报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">error: RPC failed; curl 92 HTTP/2 stream 5 was not closed cleanly: CANCEL (err 8)</span><br><span class="line">  error: 30 bytes of body are still expected</span><br><span class="line">  fetch-pack: unexpected disconnect while reading sideband packet</span><br><span class="line">  fatal: early EOF</span><br><span class="line">  fatal: fetch-pack: invalid index-pack output</span><br></pre></td></tr></table></figure><p>看不懂，干脆问ai，然后在ai的答案里面找到了解药。</p><p>我选择的方法是把http更换成ssh（<a href="https://blog.whispery.top/2025/02/2025020701/">毕竟昨天刚解决ssh的连接问题</a>）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 尝试SSH协议（需提前配置SSH key）</span></span><br><span class="line">git config --global url.<span class="string">&quot;git@github.com:&quot;</span>.insteadOf <span class="string">&quot;https://github.com/&quot;</span></span><br></pre></td></tr></table></figure><p>然后就，解决了。</p><hr><blockquote><p><em>下面是 DeepSeek 的回答，其中，我采取了更换协议的方法。</em></p></blockquote><p>在安装过程中出现Git相关的网络错误通常与仓库克隆问题或网络连接不稳定有关。以下是分步解决方案：</p><ol><li><p><strong>升级Git和Pip</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新Git配置（针对大仓库）</span></span><br><span class="line">git config --global http.postBuffer 524288000</span><br><span class="line">git config --global core.compression 0</span><br><span class="line"><span class="comment"># 升级pip和工具链</span></span><br><span class="line"></span><br><span class="line"> pip install --upgrade pip setuptools wheel</span><br></pre></td></tr></table></figure></li><li><p><strong>更换Git协议（二选一）</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 尝试SSH协议（需提前配置SSH key）</span></span><br><span class="line">git config --global url.<span class="string">&quot;git@github.com:&quot;</span>.insteadOf <span class="string">&quot;https://github.com/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或强制使用HTTP/1.1</span></span><br><span class="line">git config --global http.version HTTP/1.1</span><br></pre></td></tr></table></figure></li><li><p><strong>手动克隆仓库（关键步骤）</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先单独克隆主仓库（替换为实际仓库URL）</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/yourusername/llava-next.git</span><br><span class="line"><span class="built_in">cd</span> llava-next</span><br><span class="line"><span class="comment"># 初始化子模块（如果有）</span></span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure></li><li><p><strong>使用镜像源安装</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在项目目录中运行（已手动克隆后）</span></span><br><span class="line">pip install -e <span class="string">&quot;.[train]&quot;</span> \</span><br><span class="line"> -i https://pypi.tuna.tsinghua.edu.cn/simple \</span><br><span class="line"> --trusted-host pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure></li><li><p><strong>若仍遇到包下载问题</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对特定包使用镜像源</span></span><br><span class="line">pip install torch torchvision -i https://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure></li></ol><p><strong>其他注意事项：</strong></p><ul><li>确保已安装构建依赖：<code>sudo apt-get install -y git python3-dev python3-venv</code></li><li>如果使用代理，请配置git代理：<code>git config --global http.proxy your_proxy:port</code></li><li>尝试在网络状况较好的时段进行操作</li><li>对于特别大的仓库，可添加<code>--depth 1</code>参数进行浅克隆</li></ul><p>如果问题依旧存在，请提供：</p><ol><li>完整的安装命令输出</li><li><code>pip -V</code> 和 <code>git --version</code> 的版本信息</li><li>是否使用特殊网络环境（公司代理/VPN等）</li></ol><p>这样可以进一步诊断具体问题原因。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 踩坑记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> 踩坑记录 </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2025/02/hello-world/"/>
+      <url>/2025/02/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SSH 连不上 github 怎么办啊？</title>
-      <link href="/2025/02/2025020701/"/>
-      <url>/2025/02/2025020701/</url>
+      <link href="/2025/02/250201/"/>
+      <url>/2025/02/250201/</url>
       
         <content type="html"><![CDATA[<p>我不造啊。突然间就连不上了，变量也忒多了，于是不得不花几个钟上网到处找才解决问题。</p><h1 id="代理在干嘛？有没有发力？">代理在干嘛？有没有发力？</h1><p>首先检查的就是代理程序是不是只进行了HTTP代理。虽然暂时不是很懂代理原理，但是显然不对SSH进行代理配置是不行的，于是我上网寻找如何给SSH进行代理。</p><p>忍不住吐槽的是，网上搜出来的东西全是前篇一律：如何在 Mac 上给 ssh 配置代理？如何在 Linux 上给 ssh 配置代理？搜出来的几百篇（夸张）文章都是同一样的图和同一样的命令……甚至同一样的文本（这是真的）。</p><p>在我以为<s>很小众的</s> Windows 用户在这鬼打墙一样的互联网上没有容身之所、要颠沛流离的时候，我找到了<a href="https://blog.imyan.ren/posts/4d70a82d/">这个</a>，跟着博客成功配置了代理。为了防止失联，所以我还是把方法重新整理一下吧。</p><ol><li><p>首先就像正常配置ssh一样打开配置文件。</p><p>什么？你不会？ssh配置文件应该在 <code>~/.ssh</code>(git bash)，或者 <code>C:\Users\用户名\.ssh</code>(Windows) 目录下，这个目录下有个<code>config</code>的文件（细节没有.xxx扩展名，此外如果没有这个文件你可以创建一个）</p></li><li><p>写入配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    ProxyCommand &quot;ProxyCommand &quot;C:\Program Files\Git\mingw64\bin\connect.exe&quot; -S 127.0.0.1:10808 %h %p</span><br></pre></td></tr></table></figure><p>第一行意思是对 <a href="http://github.com">github.com</a> 有效，第二行则是：代理的程序（我这里的<code>connect.exe</code>就是 git bash的东东），-S 代表 Sockets5 代理，然后后面是代理的地址和端口，最后 <code>%h %p</code>照抄就行。</p></li><li><p>保存，然后 <code>ssh -T git@github.com</code>试试，如果正常连接上就说明没问题，你可以收工了。</p></li></ol><h1 id="唉-端口22">唉，端口22</h1><p>如果还有问题——像我一样的<code>kex_exchange_identification: Connection closed by remote host</code>，那你有福了。</p><p>我直接放参考资料吧，最后是我自己的从参考资料里面找到有效的解法：</p><p><a href="https://github.com/orgs/community/discussions/55269">kex_exchange_identification: Connection closed by remote host · community · Discussion #55269</a></p><p><a href="https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">Using SSH over the HTTPS port - GitHub Docs</a></p><p>你可以试试这条命令是否能连上</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T -p 443 git@ssh.github.com</span><br></pre></td></tr></table></figure><p>如果能连上那应该用我同样的方法是可以的。简单说就是把 22 端口改成 443 端口，直接改 ssh的 <code>config</code> 就行。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    ProxyCommand &quot;ProxyCommand &quot;C:\Program Files\Git\mingw64\bin\connect.exe&quot; -S 127.0.0.1:10808 %h %p</span><br><span class="line">    Hostname ssh.github.com</span><br><span class="line">    Port 443</span><br><span class="line">    User git</span><br></pre></td></tr></table></figure><p>具体参数意思懒得写了（猜也能猜出来），不懂就问 ai 吧。</p>]]></content>
       
       
       <categories>
           
-          <category> 计算机世界 </category>
+          <category> 踩坑记录 </category>
           
       </categories>
       
@@ -24,7 +66,9 @@
             
             <tag> 计算机科学 </tag>
             
-            <tag> debug </tag>
+            <tag> ssh </tag>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -97,9 +141,9 @@
             
             <tag> 计算机科学 </tag>
             
-            <tag> 软件工程 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 软件工程 </tag>
             
         </tags>
       
@@ -371,19 +415,6 @@
             <tag> 公告 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2024/03/hello-world/"/>
-      <url>/2024/03/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
