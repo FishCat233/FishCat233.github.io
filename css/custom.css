@@ -1,0 +1,8 @@
+#page-header:not(.not-top-img)::before {
+    /* background: linear-gradient(var(--mark-bg), rgba(0,0,0,0))  */
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#page-header {
+    background-color: rgba(0, 0, 0, 0);
+}
