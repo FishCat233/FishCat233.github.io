@@ -37,19 +37,6 @@
     
     
     <entry>
-      <title>test</title>
-      <link href="/2025/02/test/"/>
-      <url>/2025/02/test/</url>
-      
-        <content type="html"><![CDATA[<p>== marked ==</p><p>++ insert ++</p><span class="heimu" title="你知道的太多了">这是个黑幕</span><span class="heimu" title="你好">这是个自定标题的黑幕</span>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>git clone 报错什么 RPC failed 啊怎么办？</title>
       <link href="/2025/02/250203/"/>
       <url>/2025/02/250203/</url>
@@ -66,9 +53,9 @@
       
         <tags>
             
-            <tag> 踩坑记录 </tag>
-            
             <tag> git </tag>
+            
+            <tag> 踩坑记录 </tag>
             
             <tag> github </tag>
             
@@ -108,13 +95,13 @@
       
         <tags>
             
-            <tag> git </tag>
-            
             <tag> 科技数码 </tag>
             
             <tag> 计算机科学 </tag>
             
             <tag> ssh </tag>
+            
+            <tag> git </tag>
             
         </tags>
       
