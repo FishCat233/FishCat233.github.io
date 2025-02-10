@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>x264处理安卓手机视频时产生的视频旋转问题</title>
+      <link href="/2025/02/250205/"/>
+      <url>/2025/02/250205/</url>
+      
+        <content type="html"><![CDATA[<p>你好</p><p><strong>省流：用 ffmpeg -i video.mp4 output.mp4 处理一下就可以了</strong></p><h1 id="什么玩意？这就完了？">什么玩意？这就完了？</h1><p>事情也不是很复杂：安卓拍摄的视频会附带带有rotation的Side data在视频的Meta data中——也就是也就是说安卓拍的视频可能自带了旋转信息。</p><p>可以做个实验测试一下，使用 <code>ffmpeg -i video.mp4 -hide_banner</code> 查看一个安卓手机拍摄的竖屏视频的信息。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#x27;video.mp4&#x27;:</span><br><span class="line">  Metadata:</span><br><span class="line">    major_brand     : mp42</span><br><span class="line">    minor_version   : 0</span><br><span class="line">    compatible_brands: isommp42</span><br><span class="line">    creation_time   : 2024-11-08T09:05:46.000000Z</span><br><span class="line">    com.android.version: 13</span><br><span class="line">    com.android.capture.fps: 60.000000</span><br><span class="line">  Duration: 00:00:20.32, start: 0.000000, bitrate: 10410 kb/s</span><br><span class="line">  Stream #0:0[0x1](eng): Video: hevc (Main) (hvc1 / 0x31637668), yuv420p(tv, bt709), 1920x1080, 10002 kb/s, 60.02 fps, 59.94 tbr, 90k tbn (default)</span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2024-11-08T09:05:46.000000Z</span><br><span class="line">      handler_name    : VideoHandle</span><br><span class="line">      vendor_id       : [0][0][0][0]</span><br><span class="line">    Side data:</span><br><span class="line">      displaymatrix: rotation of -90.00 degrees</span><br><span class="line">  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 256 kb/s (default)</span><br><span class="line">    Metadata:</span><br><span class="line">      creation_time   : 2024-11-08T09:05:46.000000Z</span><br><span class="line">      handler_name    : SoundHandle</span><br><span class="line">      vendor_id       : [0][0][0][0]</span><br></pre></td></tr></table></figure><p>目光放到视频流信息这里，其中可以看见是视频流的信息，里面有视频分辨率和视频的旋转信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Stream #0:0[0x1](eng): Video: hevc (Main) (hvc1 / 0x31637668), yuv420p(tv, bt709), 1920x1080, 10002 kb/s, 60.02 fps, 59.94 tbr, 90k tbn (default)</span><br><span class="line">  Metadata:</span><br><span class="line">    creation_time   : 2024-11-08T09:05:46.000000Z</span><br><span class="line">    handler_name    : VideoHandle</span><br><span class="line">    vendor_id       : [0][0][0][0]</span><br><span class="line">  Side data:</span><br><span class="line">    displaymatrix: rotation of -90.00 degrees</span><br></pre></td></tr></table></figure><p>注意看这个视频流的分辨率——<strong>1920x1080</strong>？这不是横屏的分辨率吗，怎么回事呢？答案在底下的 <code>Side data</code> 里面的 <code>displaymatrix: rotation of -90.00 degress</code> 这里。</p><p><strong>——旋转 90 度！！！</strong></p><p>在播放器读取到这样的 Side data 之后播放视频的时候就会自动旋转 90 度，变成<strong>1080x1920</strong>——也就是播放时所看到的竖屏。</p><p>原来如此原来如此。</p><h1 id="原来什么啊？所以为什么x264处理视频会旋转呢？">原来什么啊？所以为什么x264处理视频会旋转呢？</h1><p>因为x264 <em>疑似</em> 直接丢了旋转的信息（做过实验但是我忘了结果，感兴趣可以自己试试）。而如果你使用 ffmpeg 就不会发生这样的事——ffmpeg会自动检测旋转信息然后在对视频处理的时候默默帮你旋转然后消去旋转信息。</p><p>所以解决办法就有了，让ffmpeg先处理把视频的旋转信息消掉，然后再让x264处理就行了。</p><p>虽然看起来有些笨，但是暂时是没想到别的简单的方法了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 踩坑记录 </tag>
+            
+            <tag> 计算机 </tag>
+            
+            <tag> 视频处理 </tag>
+            
+            <tag> ffmpeg </tag>
+            
+            <tag> x264 </tag>
+            
+            <tag> 安卓 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>写一个 hexo 插件</title>
       <link href="/2025/02/250204/"/>
       <url>/2025/02/250204/</url>
